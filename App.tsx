@@ -10,7 +10,6 @@ import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
   ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
   useColorScheme,
@@ -18,6 +17,7 @@ import {
 } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import BootSplash from 'react-native-bootsplash';
+import {StatusBar} from 'react-native-bars';
 
 import {
   Colors,
@@ -60,11 +60,6 @@ function Section({children, title}: SectionProps): JSX.Element {
 export default function NewApp() {
   return (
     <NavigationContainer onReady={() => BootSplash.hide()}>
-      <StatusBar
-        translucent={true}
-        backgroundColor="transparent"
-        barStyle="dark-content"
-      />
       <App />
     </NavigationContainer>
   );
@@ -79,10 +74,7 @@ function App(): JSX.Element {
 
   return (
     <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
+      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
