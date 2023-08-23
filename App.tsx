@@ -16,6 +16,8 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import BootSplash from 'react-native-bootsplash';
 
 import {
   Colors,
@@ -52,6 +54,19 @@ function Section({children, title}: SectionProps): JSX.Element {
         {children}
       </Text>
     </View>
+  );
+}
+
+export default function NewApp() {
+  return (
+    <NavigationContainer onReady={() => BootSplash.hide()}>
+      <StatusBar
+        translucent={true}
+        backgroundColor="transparent"
+        barStyle="dark-content"
+      />
+      <App />
+    </NavigationContainer>
   );
 }
 
@@ -114,5 +129,3 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
 });
-
-export default App;
